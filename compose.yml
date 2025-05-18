@@ -121,8 +121,8 @@ services:
       restart: unless-stopped 
       build:
         context: ./movies-frontend
-      ports:
-        - "80:80"
+      #ports:
+      #  - "80:80"
       depends_on:
         - backend
       networks:
@@ -157,6 +157,7 @@ services:
         - 'traefik.http.services.backend.loadbalancer.server.port=8080'
   mongodb:
     image: mongo:8.0.6
+    container_name: mongo-db
     restart: unless-stopped 
     networks:
       - cloud
