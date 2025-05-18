@@ -9,4 +9,4 @@
 - [portainer](https://portainer.manac.duckdns.org)
 - [nextcloud](https://nextcloud.manac.duckdns.org)
 - [jellyfin](https://jellyfin.manac.duckdns.org)
-- [movies-gold](https://frontend.manac.duckdns.org)
+- [movies-gold](https://movies-gold.manac.duckdns.org)
