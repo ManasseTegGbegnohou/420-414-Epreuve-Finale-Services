@@ -99,8 +99,8 @@ services:
     networks: 
       - cloud
     # Mappage de port (du port 8096 du conteneur vers le port 8096 de la machine hôte)
-    # ports:
-    #  - 8096:8096
+    ports:
+     - 8096:8096
     environment:
       - TZ=America/Montreal
     # Volumes du conteneur: mappe des répertoires du conteneur vers des répertoire de la machine hôte
@@ -121,8 +121,8 @@ services:
       restart: unless-stopped 
       build:
         context: ./movies-frontend
-      # ports:
-        # - "80:80"
+      ports:
+        - "80:80"
       depends_on:
         - backend
       networks:
@@ -141,8 +141,8 @@ services:
       context: ./movies-backend
     # In case you just want to deploy the backend and access it
     # without deploying the frontend, add a port mapping
-    # ports:
-    #   - "8080:8080"
+    ports:
+      - "8080:8080"
     depends_on:
       - mongodb
     networks:
@@ -219,3 +219,4 @@ volumes:
 networks:
     cloud:
         driver: bridge
+        
