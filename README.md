@@ -6,8 +6,7 @@
 
 ## Available Services:
 
-- portainer.manac.duckdns.orgc
-- nextcloud.manac.duckdns.org
-- jellyfin.manac.duckdns.org
-- frontend.manac.duckdns.org
-- backend.manac.duckdns.org
+- [portainer](https://portainer.manac.duckdns.org)
+- [nextcloud](https://nextcloud.manac.duckdns.org)
+- [jellyfin](https://jellyfin.manac.duckdns.org)
+- [movies-gold](https://frontend.manac.duckdns.org)
