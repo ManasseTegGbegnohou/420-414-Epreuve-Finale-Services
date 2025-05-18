@@ -6,7 +6,7 @@
 
 ## Available Services:
 
-- [portainer.manac.duckdns.orgc](https://portainer.manac.duckdns.orgc)
-- [nextcloud.manac.duckdns.org](https://nextcloud.manac.duckdns.orgc)
-- [jellyfin.manac.duckdns.org](https://jellyfin.manac.duckdns.orgc)
-- [frontend.manac.duckdns.org](https://frontend.manac.duckdns.orgc)
+- [portainer.manac.duckdns.org](https://portainer.manac.duckdns.org)
+- [nextcloud.manac.duckdns.org](https://nextcloud.manac.duckdns.org)
+- [jellyfin.manac.duckdns.org](https://jellyfin.manac.duckdns.org)
+- [frontend.manac.duckdns.org](https://frontend.manac.duckdns.org)
