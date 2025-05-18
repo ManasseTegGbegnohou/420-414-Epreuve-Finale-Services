@@ -10,8 +10,8 @@ services:
     networks: 
         - cloud
     # Mappage de port (du port 9000 du conteneur vers le port 9000 de la machine hôte)
-    #ports:
-    #  - 9000:9000
+    ports:
+      - 9000:9000
     # Volumes 
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -20,8 +20,7 @@ services:
         - 'traefik.enable=true'
         - 'traefik.http.routers.portainer.rule=Host(`portainer.${MY_DOMAIN}`)'
         - 'traefik.http.routers.portainer.entryPoints=websecure'
-        - "traefik.http.services.frontend.loadbalancer.server.port=9000"
-        - "traefik.http.routers.frontend.service=frontend"
+        - "traefik.http.services.portainer.loadbalancer.server.port=9000"
 
 
   nextclouddb:
@@ -86,6 +85,7 @@ services:
         - 'traefik.enable=true'
         - 'traefik.http.routers.nextcloud.rule=Host(`nextcloud.${MY_DOMAIN}`)'
         - 'traefik.http.routers.nextcloud.entryPoints=websecure'
+        - 'traefik.http.services.nextcloud.loadbalancer.server.port=80'
 
 
   jellyfin:
@@ -112,6 +112,7 @@ services:
         - 'traefik.enable=true'
         - 'traefik.http.routers.jellyfin.rule=Host(`jellyfin.${MY_DOMAIN}`)'
         - 'traefik.http.routers.jellyfin.entryPoints=websecure'
+        - 'traefik.http.services.jellyfin.loadbalancer.server.port=8096'
 
 
   frontend:
@@ -128,8 +129,9 @@ services:
         - cloud
       labels:
         - 'traefik.enable=true'
-        - 'traefik.http.routers.nextcloud.rule=Host(`movies-frontend.${MY_DOMAIN}`)'
-        - 'traefik.http.routers.nextcloud.entryPoints=websecure'
+        - 'traefik.http.routers.frontend.rule=Host(`frontend.${MY_DOMAIN}`)'
+        - 'traefik.http.routers.frontend.entryPoints=websecure'
+        - 'traefik.http.services.frontend.loadbalancer.server.port=80'
 
   backend:
     image: manacccc/tp2-2271627-2241112-backend:${BACKEND_VERSION:-latest}
@@ -150,8 +152,9 @@ services:
       - SERVER_PORT=${API_PORT}
     labels:
         - 'traefik.enable=true'
-        - 'traefik.http.routers.nextcloud.rule=Host(`movies-backend.${MY_DOMAIN}`)'
-        - 'traefik.http.routers.nextcloud.entryPoints=websecure'
+        - 'traefik.http.routers.backend.rule=Host(`backend.${MY_DOMAIN}`)'
+        - 'traefik.http.routers.backend.entryPoints=websecure'
+        - 'traefik.http.services.backend.loadbalancer.server.port=8080'
   mongodb:
     image: mongo:8.0.6
     restart: unless-stopped 
@@ -166,9 +169,6 @@ services:
       # this script will be copied inside the container and will run 
       # when the container starts
       - ./mongo-seed:/docker-entrypoint-initdb.d
-
-  volumes:
-    db:
 
   proxy:
       image: traefik
@@ -214,6 +214,7 @@ volumes:
     portainer_data:
     nextclouddb:
     jellyfin_data:
+    db:
 # Création du réseau cloud (ou les conteneurs vont être lancés)
 networks:
     cloud:
