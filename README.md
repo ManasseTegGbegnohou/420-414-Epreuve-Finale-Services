@@ -2,7 +2,7 @@
 
 ## Terraform Configuration Files
 
-- Docker, Nginx and configuration files for the final project.
+- Docker, Compose.yaml and configuration files for the final project.
 
 ## Available Services:
 
