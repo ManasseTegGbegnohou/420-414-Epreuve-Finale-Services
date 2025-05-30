@@ -9,9 +9,6 @@ services:
     # Réseau docker dans lequel le conteneur va s'exécuter
     networks:
       - cloud
-    # Mappage de port (du port 9000 du conteneur vers le port 9000 de la machine hôte)
-    ports:
-      - 9000:9000
     # Volumes
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
@@ -61,9 +58,6 @@ services:
     # Attend que la base de données se lance avant de se lancer
     depends_on:
       - nextclouddb
-    # Mappage de port (du port 80 du conteneur vers le port 8081 de la machine hôte)
-    ports:
-      - 8081:80
     # Volumes du conteneur: mappe un répertoire du conteneur vers un répertoire de la machine hôte
     volumes:
       - ./html:/var/www/html
@@ -96,9 +90,6 @@ services:
     # Réseau dans lequel le conteneur va s'exécuter
     networks:
       - cloud
-    # Mappage de port (du port 8096 du conteneur vers le port 8096 de la machine hôte)
-    ports:
-      - 8096:8096
     environment:
       - TZ=America/Montreal
     # Volumes du conteneur: mappe des répertoires du conteneur vers des répertoire de la machine hôte
@@ -118,8 +109,6 @@ services:
     restart: unless-stopped
     build:
       context: ./movies-frontend
-    #ports:
-    #  - "80:80"
     depends_on:
       - backend
     networks:
@@ -136,10 +125,6 @@ services:
     restart: unless-stopped
     build:
       context: ./movies-backend
-    # In case you just want to deploy the backend and access it
-    # without deploying the frontend, add a port mapping
-    ports:
-      - "8080:8080"
     depends_on:
       - mongodb
     networks:
