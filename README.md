@@ -2,7 +2,7 @@
 
 ## Terraform Configuration Files
 
-- Docker, Compose.yaml and configuration files for the final cloud computing project.
+- Docker, Compose.yaml and configuration files for the final cloud computing class project.
 
 ## Available Services:
 
