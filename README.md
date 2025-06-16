@@ -1,8 +1,8 @@
 # 420-410-Epreuve-finale
 
-## Terraform Configuration Files
+## Multi-Services Docker Network
 
-- Docker, Compose.yaml and configuration files for the final cloud computing class project.
+- `Docker`, `Compose.yaml` and configuration files for the final cloud computing class project.
 
 ## Available Services:
 
